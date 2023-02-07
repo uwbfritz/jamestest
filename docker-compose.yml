@@ -1,0 +1,15 @@
+version: "3"
+services:
+  frontend:
+    container_name: drupal9_test
+    image: "uwbfritz/d9frontend:latest"
+    ports:
+      - "9880:80"
+      - "9843:443"
+    volumes:
+      - drupal9_test:/var/www/html:cached
+      - ./config/php.ini:/usr/local/etc/php/php.ini:cached
+      - ./config/apache2.conf:/etc/apache2/apache2.conf:cached
+      - ./config/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:cached
+volumes:
+  drupal9_test:
